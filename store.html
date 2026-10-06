@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><title>DesiMart – Online Shopping</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7fb;--card:#fff;--tx:#1a1d29;--mu:#6b7280;--ac:#e8590c;--bd:#e5e7eb}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141b;--card:#1d2029;--tx:#f1f2f6;--mu:#9aa1b2;--ac:#ff7a33;--bd:#2c303c}}
+:root[data-theme="dark"]{--bg:#12141b;--card:#1d2029;--tx:#f1f2f6;--mu:#9aa1b2;--ac:#ff7a33;--bd:#2c303c}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 14px;display:flex;gap:10px;align-items:center}
+.logo{font-weight:800;font-size:20px;color:var(--ac);white-space:nowrap}
+#q{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font-size:15px}
+button{font:inherit;cursor:pointer}
+.cartb{position:relative;background:var(--ac);color:#fff;border:0;border-radius:10px;padding:9px 12px;font-weight:700}
+.cartb b{background:#fff;color:var(--ac);border-radius:9px;padding:0 6px;margin-left:4px;font-size:12px}
+.hero{margin:14px;padding:22px;border-radius:16px;background:linear-gradient(120deg,#e8590c,#f59f00);color:#fff}
+.hero h1{margin:0 0 4px;font-size:22px}.hero p{margin:0;opacity:.95}
+.bar{display:flex;gap:8px;padding:0 14px 8px;overflow-x:auto}
+.chip{flex:none;padding:8px 14px;border-radius:20px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.tools{display:flex;justify-content:space-between;align-items:center;padding:4px 14px 10px;color:var(--mu);font-size:14px}
+select{padding:7px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;padding:0 14px 30px;max-width:1200px;margin:auto}
+.p{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px;display:flex;flex-direction:column}
+.im{height:110px;border-radius:10px;display:grid;place-items:center}.im svg{width:68%;height:68%;filter:drop-shadow(0 4px 6px #0003)}.im.sm{width:46px;height:46px;border-radius:8px;flex:none}.im.sm svg{width:70%;height:70%}
+.p h3{font-size:14px;margin:8px 0 2px;line-height:1.3;min-height:36px}
+.rt{font-size:12px;color:var(--mu)}.rt i{color:#f59f00;font-style:normal}
+.pr{margin:4px 0 8px}.pr b{font-size:17px}.pr s{color:var(--mu);font-size:12px;margin-left:5px}.pr em{color:#16a34a;font-size:12px;font-style:normal;margin-left:4px}
+.add{margin-top:auto;border:1px solid var(--ac);background:transparent;color:var(--ac);border-radius:9px;padding:8px;font-weight:700}
+.add:active{background:var(--ac);color:#fff}
+#ov{position:fixed;inset:0;background:#0007;display:none;z-index:9}
+#dr{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--card);z-index:10;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#dr.o{transform:none}
+.dh{display:flex;justify-content:space-between;padding:14px;border-bottom:1px solid var(--bd);font-weight:700}
+#items{flex:1;overflow:auto;padding:10px 14px}
+.it{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);font-size:14px}
+.it .e{font-size:28px}.it div{flex:1}
+.q button{width:26px;height:26px;border-radius:7px;border:1px solid var(--bd);background:var(--bg);color:var(--tx)}
+.ft{padding:14px;border-top:1px solid var(--bd)}
+.co{width:100%;padding:12px;border:0;border-radius:10px;background:var(--ac);color:#fff;font-weight:700;margin-top:8px}
+.x{background:none;border:0;color:var(--tx);font-size:20px}
+#md{position:fixed;inset:0;z-index:20;display:none;align-items:flex-end;justify-content:center;background:#0008}#md.o{display:flex}
+.bx{background:var(--card);width:min(440px,100%);max-height:92%;overflow:auto;border-radius:18px 18px 0 0;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.bx input,.bx textarea{width:100%;padding:10px;margin:5px 0;border:1px solid var(--bd);border-radius:9px;background:var(--bg);color:var(--tx);font:inherit}
+.pm{display:flex;gap:8px;align-items:center;padding:10px;border:1px solid var(--bd);border-radius:10px;margin:6px 0}.pm input{width:auto;margin:0}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+</style></head><body>
+<header><span class="logo">🛍️ DesiMart</span><input id="q" placeholder="Product search karein..."><button class="cartb" onclick="tog(1)">🛒<b id="cc">0</b></button></header>
+<div class="hero"><h1>Mega Sale – 120+ Products</h1><p>Free delivery ₹299+ par • Cash on Delivery available</p></div>
+<div class="bar" id="cats"></div>
+<div class="tools"><span id="cnt"></span><select id="so"><option value="">Sort: Popular</option><option value="l">Price: Low → High</option><option value="h">Price: High → Low</option><option value="r">Top Rated</option></select></div>
+<div id="grid"></div>
+<footer>© DesiMart • Demo store</footer>
+<div id="ov" onclick="tog(0)"></div>
+<aside id="dr"><div class="dh"><span>Aapka Cart</span><button class="x" onclick="tog(0)">✕</button></div><div id="items"></div>
+<div class="ft"><div style="display:flex;justify-content:space-between"><span>Total</span><b id="tt">₹0</b></div><button class="co" onclick="order()">Order Place Karein</button></div></aside>
+<div id="md"><div class="bx" id="bx"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const UPI="yourname@upi";let T=0;
+const C=[
+["Electronics","🎧","#dbeafe",199,2999,"Wireless Earbuds,Bluetooth Speaker,Smart Watch,Power Bank 20000mAh,Phone Charger 65W,USB-C Cable,Gaming Mouse,Mechanical Keyboard,Laptop Stand,HD Webcam,LED Desk Lamp,Wi-Fi Router,Neckband,Tripod Stand,Ring Light,Phone Holder,Memory Card 128GB,Pen Drive 64GB,Smart Bulb,Wired Earphones"],
+["Fashion","👕","#fce7f3",149,1499,"Cotton T-Shirt,Denim Jeans,Hoodie,Formal Shirt,Kurta Set,Saree,Sneakers,Sandals,Cap,Sunglasses,Leather Wallet,Backpack,Belt,Socks Pack of 5,Track Pants,Jacket,Lehenga,Analog Watch,Scarf,Handbag"],
+["Home","🏠","#dcfce7",99,1999,"Bedsheet Set,Pillow Pair,Curtains,Wall Clock,Table Lamp,Water Bottle,Lunch Box,Storage Box,Dinner Set,Non-stick Pan,Pressure Cooker,Mixer Grinder,Electric Kettle,Air Fryer,Towel Set,Door Mat,Photo Frame,Wall Art,Cushion Covers,Mop Set"],
+["Beauty","💄","#ffe4e6",49,999,"Face Wash,Moisturiser,Sunscreen SPF50,Lipstick,Kajal,Perfume,Hair Oil,Shampoo,Conditioner,Beard Trimmer,Hair Dryer,Face Serum,Body Lotion,Nail Polish Set,Makeup Brush Kit,Face Mask Pack,Deodorant,Soap Combo,Hair Straightener,Lip Balm"],
+["Sports","🏏","#fef3c7",99,1499,"Cricket Bat,Cricket Ball,Football,Badminton Racket,Shuttlecock Pack,Yoga Mat,Dumbbells 5kg,Skipping Rope,Gym Gloves,Resistance Bands,Running Shoes,Sipper Bottle,Cycling Helmet,Carrom Board,Chess Set,Tennis Ball,Swimming Goggles,Protein Shaker,Sports Bag,Fitness Band"],
+["Kids & Books","🧸","#ede9fe",49,799,"Building Blocks,RC Car,Teddy Bear,Puzzle 500pc,Board Game,Story Book Set,Colouring Kit,Notebook Pack,Pen Set,School Bag,Art Paint Set,Doll House,Stuffed Toy,Kids Cycle,Water Gun,Flash Cards,Diary,Geometry Box,Hindi Story Book,Science Kit"]];
+const P=[];let n=0;
+C.forEach((c,ci)=>c[5].split(",").forEach((nm,i)=>{n++;const r=((n*7919)%97)/97;const pr=Math.round((c[3]+r*r*(c[4]-c[3]))/10)*10-1;const d=10+(n*13)%46;
+P.push({id:n,ci,i,n:nm,c:c[0],e:c[1],bg:c[2],p:pr,m:Math.round(pr/(1-d/100)/10)*10-1,d,r:(3.8+((n*29)%12)/10).toFixed(1),rv:50+(n*137)%2400});}));
+const S=[
+'<path d="M25 60V50a25 25 0 0150 0v10" fill="none" stroke="#fff" stroke-width="7"/><rect x="18" y="56" width="14" height="24" rx="6" fill="#fff"/><rect x="68" y="56" width="14" height="24" rx="6" fill="#fff"/>',
+'<rect x="34" y="14" width="32" height="72" rx="8" fill="#fff"/><rect x="39" y="22" width="22" height="48" rx="3" fill="rgba(0,0,0,.25)"/>',
+'<rect x="36" y="10" width="28" height="80" rx="8" fill="rgba(255,255,255,.6)"/><circle cx="50" cy="50" r="22" fill="#fff"/><path d="M50 36v14l9 6" stroke="#444" stroke-width="4" fill="none"/>',
+'<path d="M35 18l-22 14 8 14 11-5v42h36V41l11 5 8-14-22-14c-3 8-9 11-15 11s-12-3-15-11z" fill="#fff"/>',
+'<path d="M12 62c14 0 18-14 20-26l10 4c4 8 14 12 30 14 10 2 16 4 16 14v6H12z" fill="#fff"/>',
+'<rect x="20" y="38" width="60" height="44" rx="8" fill="#fff"/><path d="M36 38v-8a14 14 0 0128 0v8" fill="none" stroke="#fff" stroke-width="6"/>',
+'<path d="M30 56l10-34h20l10 34z" fill="#fff"/><rect x="47" y="56" width="6" height="22" fill="#fff"/><rect x="34" y="78" width="32" height="7" rx="3" fill="#fff"/>',
+'<rect x="20" y="42" width="60" height="38" rx="8" fill="#fff"/><rect x="14" y="36" width="72" height="8" rx="4" fill="rgba(255,255,255,.7)"/><rect x="44" y="26" width="12" height="10" rx="3" fill="#fff"/>',
+'<rect x="40" y="10" width="20" height="12" rx="3" fill="rgba(255,255,255,.7)"/><rect x="32" y="22" width="36" height="66" rx="10" fill="#fff"/>',
+'<rect x="38" y="52" width="24" height="34" rx="4" fill="#fff"/><rect x="42" y="30" width="16" height="24" fill="rgba(255,255,255,.7)"/><path d="M42 30l16-14v14z" fill="#fff"/>',
+'<rect x="24" y="40" width="52" height="44" rx="10" fill="#fff"/><rect x="28" y="28" width="44" height="14" rx="5" fill="rgba(255,255,255,.7)"/>',
+'<rect x="30" y="36" width="40" height="50" rx="8" fill="#fff"/><rect x="42" y="22" width="16" height="14" fill="rgba(255,255,255,.7)"/><rect x="38" y="14" width="26" height="8" rx="3" fill="#fff"/>',
+'<circle cx="50" cy="50" r="34" fill="#fff"/><path d="M50 16v68M16 50h68" stroke="rgba(0,0,0,.25)" stroke-width="4"/>',
+'<rect x="10" y="38" width="14" height="24" rx="4" fill="#fff"/><rect x="76" y="38" width="14" height="24" rx="4" fill="#fff"/><rect x="24" y="46" width="52" height="8" fill="rgba(255,255,255,.7)"/>',
+'<g transform="rotate(35 50 50)"><rect x="44" y="8" width="12" height="30" rx="5" fill="rgba(255,255,255,.7)"/><rect x="40" y="36" width="20" height="54" rx="8" fill="#fff"/></g>',
+'<rect x="16" y="52" width="32" height="32" rx="4" fill="#fff"/><rect x="52" y="52" width="32" height="32" rx="4" fill="rgba(255,255,255,.7)"/><rect x="34" y="18" width="32" height="32" rx="4" fill="#fff"/>',
+'<circle cx="28" cy="28" r="12" fill="#fff"/><circle cx="72" cy="28" r="12" fill="#fff"/><circle cx="50" cy="52" r="30" fill="#fff"/><circle cx="41" cy="48" r="4" fill="#555"/><circle cx="59" cy="48" r="4" fill="#555"/><ellipse cx="50" cy="62" rx="8" ry="6" fill="rgba(0,0,0,.2)"/>',
+'<path d="M50 24c-10-8-26-8-34-4v56c8-4 24-4 34 4 10-8 26-8 34-4V20c-8-4-24-4-34 4z" fill="#fff"/><path d="M50 24v56" stroke="rgba(0,0,0,.2)" stroke-width="3"/>'];
+function art(p,sm){const h=(p.ci*55+(p.id*23)%40)%360;return `<div class="im${sm?' sm':''}" style="background:linear-gradient(135deg,hsl(${h} 70% 58%),hsl(${h+28} 72% 44%))"><svg viewBox="0 0 100 100">${S[p.ci*3+p.i%3]}</svg></div>`}
+let cat="All",cart={};try{cart=JSON.parse(localStorage.getItem("dm")||"{}")}catch(e){}
+const $=id=>document.getElementById(id);
+$("cats").innerHTML=["All",...C.map(c=>c[0])].map(x=>`<button class="chip" data-c="${x}">${x}</button>`).join("");
+$("cats").onclick=e=>{if(e.target.dataset.c){cat=e.target.dataset.c;draw()}};
+$("q").oninput=draw;$("so").onchange=draw;
+function draw(){document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("on",b.dataset.c==cat));
+const q=$("q").value.toLowerCase(),s=$("so").value;
+let L=P.filter(p=>(cat=="All"||p.c==cat)&&p.n.toLowerCase().includes(q));
+if(s=="l")L.sort((a,b)=>a.p-b.p);if(s=="h")L.sort((a,b)=>b.p-a.p);if(s=="r")L.sort((a,b)=>b.r-a.r);
+$("cnt").textContent=L.length+" products";
+$("grid").innerHTML=L.map(p=>`<div class="p">${art(p)}<h3>${p.n}</h3><div class="rt"><i>★</i> ${p.r} (${p.rv})</div><div class="pr"><b>₹${p.p}</b><s>₹${p.m}</s><em>${p.d}% off</em></div><button class="add" onclick="add(${p.id})">Cart me daalein</button></div>`).join("")||"<p>Koi product nahi mila.</p>"}
+function save(){try{localStorage.setItem("dm",JSON.stringify(cart))}catch(e){}rc()}
+function add(id){cart[id]=(cart[id]||0)+1;save()}
+function chg(id,d){cart[id]+=d;if(cart[id]<=0)delete cart[id];save()}
+function rc(){let t=0,k=0,h="";for(const id in cart){const p=P[id-1];if(!p)continue;k+=cart[id];t+=p.p*cart[id];
+h+=`<div class="it">${art(p,1)}<div>${p.n}<br><b>₹${p.p}</b></div><span class="q"><button onclick="chg(${id},-1)">−</button> ${cart[id]} <button onclick="chg(${id},1)">+</button></span></div>`}
+$("items").innerHTML=h||"<p style='color:var(--mu)'>Cart khali hai.</p>";T=t;$("tt").textContent="₹"+t;$("cc").textContent=k}
+function tog(o){$("dr").classList.toggle("o",!!o);$("ov").style.display=o?"block":"none"}
+function cl(){$("md").classList.remove("o")}
+function order(){if(!Object.keys(cart).length)return;tog(0);
+$("bx").innerHTML=`<div style="display:flex;justify-content:space-between"><b>Checkout</b><button class="x" onclick="cl()">✕</button></div><input id="nm" placeholder="Aapka naam"><input id="ph" placeholder="Mobile number" inputmode="numeric"><textarea id="ad" rows="2" placeholder="Poora pata"></textarea><b>Payment method</b>
+<label class="pm"><input type="radio" name="pm" value="upi" checked> 📲 UPI (GPay / PhonePe / Paytm)</label>
+<label class="pm"><input type="radio" name="pm" value="card"> 💳 Card / Net Banking (demo)</label>
+<label class="pm"><input type="radio" name="pm" value="cod"> 💵 Cash on Delivery</label>
+<div style="display:flex;justify-content:space-between;margin:10px 0"><span>Total</span><b>₹${T}</b></div><button class="co" onclick="pay()">Pay Karein</button>`;
+$("md").classList.add("o")}
+function done(m){cart={};save();$("bx").innerHTML=`<div style="text-align:center;padding:20px"><div style="font-size:50px">✅</div><h3>Order place ho gaya!</h3><p style="color:var(--mu)">${m}</p><button class="co" onclick="cl()">Shopping jaari rakhein</button></div>`}
+let O={};
+function conf(){const u=$("ut").value.trim();if(!/^\d{12}$/.test(u)){alert("Sahi 12 digit UTR number daalein.");return}
+const a=T,id="DM"+Date.now().toString().slice(-7);cart={};save();
+$("bx").innerHTML=`<div style="text-align:center"><div style="font-size:50px">✅</div><h3 style="margin:4px 0">Payment mil gaya, ${O.nm}!</h3><p style="color:var(--mu);margin:0 0 12px">Aapka order confirm ho gaya hai.</p></div>
+<div style="border:1px dashed var(--bd);border-radius:12px;padding:12px;font-size:14px;line-height:1.9">Order ID: <b>${id}</b><br>Amount: <b>₹${a}</b> (UPI)<br>UTR: <b>${u}</b><br>Delivery: ${O.ad}<br>Status: <b style="color:#16a34a">Payment received • Packing shuru</b></div>
+<p style="color:var(--mu);font-size:12px">Is receipt ka screenshot rakhein. Demo store: asli verification ke liye payment gateway jodna hoga.</p><button class="co" onclick="cl()">Shopping jaari rakhein</button>`}
+function pay(){const nm=$("nm").value.trim(),ph=$("ph").value.trim(),ad=$("ad").value.trim();
+if(!nm||ph.length<10||!ad){alert("Naam, 10 digit mobile aur pata bharein.");return}
+O={nm,ph,ad};const m=document.querySelector("input[name=pm]:checked").value;
+if(m=="cod")return done("Cash on Delivery: delivery par ₹"+T+" dein. (Demo store)");
+if(m=="card")return done("Card/Net Banking ke liye payment gateway (jaise Razorpay) jodna hoga. Abhi ye demo hai.");
+const L=`upi://pay?pa=${UPI}&pn=DesiMart&am=${T}&cu=INR&tn=DesiMart%20Order`;
+$("bx").innerHTML=`<b>UPI se ₹${T} pay karein</b><p style="color:var(--mu);font-size:14px">Phone par button dabayein, ya dusre phone se QR scan karein.</p><a class="co" style="display:block;text-align:center;text-decoration:none" href="${L}">UPI App Kholein</a><div id="qr" style="display:grid;place-items:center;margin:14px 0"></div><p style="margin:0;font-size:14px">Payment ke baad UPI app me dikhne wala 12 digit <b>UTR / Transaction ID</b> yahan daalein:</p><input id="ut" placeholder="12 digit UTR" inputmode="numeric" maxlength="12"><button class="co" style="background:#16a34a" onclick="conf()">Payment ho gaya ✔</button>`;
+try{new QRCode($("qr"),{text:L,width:170,height:170})}catch(e){}}
+draw();rc();
+</script></body></html>
